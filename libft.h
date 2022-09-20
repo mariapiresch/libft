@@ -6,7 +6,7 @@
 /*   By: mapires- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:28:53 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/20 11:49:37 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/20 23:22:25 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 int		ft_tolower(int c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*memmove(void *dst, const void *src, size_t len);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 #endif
