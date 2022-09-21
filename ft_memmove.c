@@ -6,7 +6,7 @@
 /*   By: mapires- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 01:09:37 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/20 21:39:08 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/21 00:47:39 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	save = dst;
 	if (dst < src)
-	{
 		while (len--)
 			*(unsigned char *)dst++ = *(unsigned char *)src++;
-	}
 	else if (dst > src)
-	{
 		while (len--)
 			*(unsigned char *)(dst + len) = *(unsigned char *)(src + len);
-	}
 	return (save);
 }

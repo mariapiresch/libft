@@ -12,14 +12,17 @@ SRCS = ft_isalpha.c	\
 	   ft_memcpy.c	\
 	   ft_memset.c	\
 	   ft_memmove.c	\
-	   ft_strlcpy.c
+	   ft_strlcpy.c	\
+	   ft_strchr.c	\
+	   ft_strrchr.c	\
+	   ft_memchr.c
 
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
 %.o: %.c
-	gcc -Wall -Werror -Wextra -c $< -o $@
+	gcc -Wall -Werror -Wextra -fsanitize=address -c $< -o $@
 
 $(NAME): $(OBJS)
 	ar rc $@ $^
