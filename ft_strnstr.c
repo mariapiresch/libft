@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 20:04:07 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/23 20:32:18 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/24 01:43:40 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,27 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char *)haystack);
 	i = 0;
 	j = 0;
-	while (*haystack && needle[i] && j < (int)len)
+	while (haystack[j] && needle[i] && j < (int)len)
 	{
-		if (*haystack == needle[i])
+		if (haystack[j] == needle[i])
 		{
 			i++;
 			j++;
 		}
+		else if (i == 0)
+			j++;
 		else
-		{
 			i = 0;
-			j = 0;
-		}
-		haystack++;
 	}
-	if (j == (int)len)
-		return ((char *)(haystack - (int)len));
+	if (needle[i] == '\0')
+		return ((char *)(haystack + j - i));
 	else
 		return (0);
 }
+
+/*int	main(void)
+{
+	printf("%s\n", strnstr("hola que tal", "tal", 0));
+	printf("%s\n", ft_strnstr("hola que tal", "tal", 0));
+	return (0);
+}*/
