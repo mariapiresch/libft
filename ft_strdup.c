@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 11:58:39 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/25 19:29:57 by mapires-         ###   ########.fr       */
+/*   Created: 2022/09/25 18:28:46 by mapires-          #+#    #+#             */
+/*   Updated: 2022/09/25 19:25:27 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strdup(const char *s1)
 {
-	void	*s;
+	size_t	s1_len;
+	char	*dest;
 
-	s = (void *)malloc(count * size);
-	if (!s)
+	s1_len = ft_strlen(s1);
+	dest = (char *)malloc((s1_len + 1) * sizeof(char));
+	if (!dest)
 		return (NULL);
-	ft_memset(s, 0, count * size);
-	return (s);
+	ft_strlcpy(dest, s1, s1_len + 1);
+	return (dest);
 }

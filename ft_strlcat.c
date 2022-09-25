@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 19:20:29 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/25 11:22:10 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/25 18:51:54 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		return (len_src + len_dst);
 }
 
-/*int	main(void)
+int	main(void)
 {
-	char	dest[] = "012345678901234";
+	char	dest[] = "01234567890123";
 
-	memset(dest, 'r', 15);
-	printf("%zu\n",ft_strlcat(dest, "lorem ipsum dolor sit amet", 5));
+	printf("%zu %s\n",ft_strlcat(dest, "lorem ipsum dolor sit amet", 3), dest);
+	//printf("%zu %s\n",strlcat(dest, "lorem ipsum dolor sit amet", -1), dest);
 	return (0);
-}*/
+}
