@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:27:22 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/26 10:33:20 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:25:41 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*res;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	len_s = ft_strlen((const char *)s);
 	res = (char *)malloc((int)(len_s + 1) * sizeof(char));
 	if (!res)

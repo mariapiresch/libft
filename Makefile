@@ -40,7 +40,7 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 %.o: %.c
-	gcc -Wall -Werror -Wextra -fsanitize=address -c $< -o $@
+	gcc -Wall -Werror -Wextra -c $< -o $@
 
 $(NAME): $(OBJS)
 	ar rc $@ $^

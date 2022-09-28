@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:13:02 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/26 10:21:25 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:15:23 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	len_s;
 
+	if (!s)
+		return (NULL);
 	len_s = ft_strlen(s);
 	if (len > len_s - start)
 		len = len_s - start;
-	if (start > ((unsigned int)len_s - 1))
-		return ((char *)(s + (int)len_s));
+	if (start >= (unsigned int)len_s)
+	{
+		len = 0;
+		start = len_s;
+	}
 	sub = (char *)malloc((len + 1) * sizeof(char));
 	if (!sub)
 		return (NULL);

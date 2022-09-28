@@ -6,13 +6,13 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 20:04:04 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/26 00:38:32 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:04:54 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_start(char const *s1, char const *set)
+static int	ft_start(char const *s1, char const *set)
 {
 	int		i;
 	int		j;
@@ -23,16 +23,16 @@ static unsigned int	ft_start(char const *s1, char const *set)
 	while (s1[i])
 	{
 		j = 0;
-		while (s1[i] != set[j])
+		while (s1[i] != set[j] && set[j])
 			j++;
 		if (j == (int)len_set)
-			return ((unsigned int)i);
+			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
-static unsigned int	ft_end(char const *s1, char const *set)
+static int	ft_end(char const *s1, char const *set)
 {
 	int		i;
 	int		j;
@@ -42,31 +42,41 @@ static unsigned int	ft_end(char const *s1, char const *set)
 	len_set = ft_strlen(set);
 	len_s1 = ft_strlen(s1);
 	i = (int)len_s1;
-	while (i >= 0)
+	while (s1[i - 1] && i > 0)
 	{
 		j = 0;
-		while (s1[i] != set[j])
+		while (s1[i - 1] != set[j] && set[j])
 			j++;
 		if (j == (int)len_set)
-			return ((unsigned int)i);
+			return (i - 1);
 		i--;
 	}
-	return (len_s1 - 1);
+	return (i - 1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	start;
-	unsigned int	end;
+	int		start;
+	int		end;
 	size_t	len;
-	char		*str;
+	char	*str;
+	size_t	len_s1;
 
+	if (!s1)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	if (!set || len_s1 == 0)
+		return ((char *)s1);
 	start = ft_start(s1, set);
 	end = ft_end(s1, set);
+	if (start >= (int)len_s1 || end == -1)
+		return ((char *)(s1 + len_s1));
 	len = (size_t)(end - start + 1);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s1 + start, len + 1);
+	str = ft_substr(s1, start, len);
 	return (str);
 }
+
+/*int	main(void)
+{
+	return (0);
+}*/
