@@ -6,7 +6,7 @@
 /*   By: mapires- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:50:35 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/22 15:19:14 by maria            ###   ########.fr       */
+/*   Updated: 2022/09/29 23:52:24 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,11 +15,11 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char)c)
 			return ((char *) s);
 		s++;
 	}
-	if (*s == '\0' && c == 0)
+	if (*s == (char)c)
 		return ((char *) s);
-	return (0);
+	return (NULL);
 }

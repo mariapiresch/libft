@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 19:20:29 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/27 23:23:16 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:16:13 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	int		i;
 
 	len_src = ft_strlen(src);
-	if (!dst)
+	if (dstsize == 0)
 		return (len_src);
 	len_dst = ft_strlen((const char *)dst);
+	if ((int)dstsize == -1)
+		dstsize = len_src + len_dst + 1;
 	i = 0;
 	while (*dst && i++ < ((int)dstsize - 1))
 		dst++;

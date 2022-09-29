@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 20:04:04 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/28 12:04:54 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:28:53 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,22 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	int		end;
 	size_t	len;
-	char	*str;
 	size_t	len_s1;
+	char	*str;
 
 	if (!s1)
 		return (NULL);
-	len_s1 = ft_strlen(s1);
-	if (!set || len_s1 == 0)
+	if (!set)
 		return ((char *)s1);
 	start = ft_start(s1, set);
-	end = ft_end(s1, set);
-	if (start >= (int)len_s1 || end == -1)
-		return ((char *)(s1 + len_s1));
-	len = (size_t)(end - start + 1);
-	str = ft_substr(s1, start, len);
+	len_s1 = ft_strlen(s1);
+	if (start == (int)len_s1)
+		len = 0;
+	else
+	{
+		end = ft_end(s1, set);
+		len = (size_t)(end - start + 1);
+	}
+	str = ft_substr(s1, (unsigned int)start, len);
 	return (str);
 }
-
-/*int	main(void)
-{
-	return (0);
-}*/
