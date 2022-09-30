@@ -6,29 +6,32 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:29:16 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/27 20:17:11 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:17:40 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nbr_sub(char const *s, char c)
+int	ft_nbr_sub(char const *s, char c)
 {
-	int	cnt;
 	int	i;
+	int	cnt;
 
-	cnt = 0;
 	i = 0;
+	cnt = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		while (s[i] == c)
+			i++;
+		if (s[i] != c)
 			cnt++;
-		i++;
+		while (s[i] != c)
+			i++;
 	}
-	return (cnt + 2);
+	return (cnt + 1);
 }
 
-static void	ft_fill_ptr(char **ptr, char const *s, char c, int cnt)
+/*static void	ft_fill_ptr(char **ptr, char const *s, char c, int cnt)
 {
 	int	i;
 	int	j;
@@ -41,26 +44,34 @@ static void	ft_fill_ptr(char **ptr, char const *s, char c, int cnt)
 	start = 0;
 	while (k < cnt - 1)
 	{
+		while (s[i] == c && s[i])
+			i++;
+		if (s[i] != c && s[i])
+			start = i;
 		while (s[i] != c && s[i++])
 			j++;
 		ptr[k] = ft_substr(s, start, j);
-		start = j + 1;
 		j = 0;
 		k++;
-		i = start;
 	}
 	ptr[cnt - 1] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**ptr;
-	int		cnt;
+	int	cnt;
+	char	**str;
 
 	cnt = ft_nbr_sub(s, c);
-	ptr = (char **)malloc(cnt * sizeof(char *));
-	if (!ptr)
+	str = (char **)malloc(cnt * sizeof(char *));
+	if (!str)
 		return (NULL);
-	ft_fill_ptr(ptr, s, c, cnt);
-	return (ptr);
+	ft_fill_ptr(str, s, c, cnt);
+	return (str);
+}*/
+
+int	main(void)
+{
+	printf("%i\n", ft_nbr_sub("hola que tal ", ' '));
+	return (0);
 }
