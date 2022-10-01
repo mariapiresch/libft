@@ -35,7 +35,12 @@ SRCS = ft_isalpha.c	\
 	   ft_split.c	\
 	   ft_itoa.c
 
+BONUS = ft_lstnew.c	\
+	ft_lstadd_front.c
+
 OBJS = $(SRCS:%.c=%.o)
+
+OBJSB = $(BONUS:%.c=%.o)
 
 all: $(NAME)
 
@@ -45,8 +50,12 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rc $@ $^
 
+bonus: $(OBJSB)
+	ar rc $(NAME) $^
+	
 clean:
 	rm -f $(OBJS)
+	rm -f $(OBJSB)
 
 fclean: clean
 	rm -f $(NAME)
