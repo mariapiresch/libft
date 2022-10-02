@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 20:05:25 by mapires-          #+#    #+#             */
-/*   Updated: 2022/10/02 03:03:33 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:10:42 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
-	new = (struct s_list *)malloc(sizeof(struct s_list));
+	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->content = content;

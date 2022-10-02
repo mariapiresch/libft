@@ -6,7 +6,7 @@
 /*   By: mapires- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 03:41:14 by mapires-          #+#    #+#             */
-/*   Updated: 2022/10/02 09:35:45 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:17:11 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*save;
 	t_list	*nodo;
 
-	if (!lst || !del)
-		return ;
 	nodo = *lst;
 	while (nodo)
 	{
 		save = nodo->next;
-		del(nodo->content);
-		free(nodo);
+		ft_lstdelone(nodo, del);
 		nodo = save;
 	}
-	free(nodo);
-	lst = NULL;
 }
