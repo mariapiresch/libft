@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: mapires- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 20:47:19 by mapires-          #+#    #+#             */
-/*   Updated: 2022/10/02 03:09:36 by mapires-         ###   ########.fr       */
+/*   Created: 2022/10/02 03:41:14 by mapires-          #+#    #+#             */
+/*   Updated: 2022/10/02 09:35:45 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	size;
+	t_list	*save;
+	t_list	*nodo;
 
-	size = 0;
-	while (lst)
+	if (!lst || !del)
+		return ;
+	nodo = *lst;
+	while (nodo)
 	{
-		size++;
-		lst = lst->next;
+		save = nodo->next;
+		del(nodo->content);
+		free(nodo);
+		nodo = save;
 	}
-	return (size);
+	free(nodo);
+	lst = NULL;
 }
