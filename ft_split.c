@@ -6,7 +6,7 @@
 /*   By: mapires- <mapires-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:29:16 by mapires-          #+#    #+#             */
-/*   Updated: 2022/09/30 17:41:26 by mapires-         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:17:38 by mapires-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,23 @@ static int	ft_nbr_sub(char const *s, char c)
 	return (cnt + 1);
 }
 
+static void	ft_free_ptr(char **ptr, int k)
+{
+	while (k)
+		free(ptr[--k]);
+	free(ptr);
+}
+
 static void	ft_fill_ptr(char **ptr, char const *s, char c, int cnt)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	start;
+	int			i;
+	int			j;
+	int			k;
+	static int	start;
 
-	i = 0;
-	j = 0;
 	k = 0;
-	start = 0;
+	j = 0;
+	i = 0;
 	while (k < cnt - 1)
 	{
 		while (s[i] == c && s[i])
@@ -51,8 +57,12 @@ static void	ft_fill_ptr(char **ptr, char const *s, char c, int cnt)
 		while (s[i] != c && s[i++])
 			j++;
 		ptr[k] = ft_substr(s, start, j);
+		if (!ptr[k++])
+		{
+			ft_free_ptr(ptr, --k);
+			return ;
+		}
 		j = 0;
-		k++;
 	}
 	ptr[cnt - 1] = NULL;
 }
@@ -74,7 +84,7 @@ char	**ft_split(char const *s, char c)
 
 /*int	main(void)
 {
-	char	**ptr;
+	char	**ptr = ft_split("tripouille", 0);
 
 	if (!ptr)
 		return (0);
