@@ -1,5 +1,9 @@
 NAME = libft.a
 
+CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra
+
 SRCS = ft_isalpha.c	\
 	   ft_isdigit.c	\
 	   ft_isalnum.c	\
@@ -51,15 +55,12 @@ OBJSB = $(BONUS:%.c=%.o)
 
 all: $(NAME)
 
-%.o: %.c
-	gcc -Wall -Werror -Wextra -c $< -o $@
-
 $(NAME): $(OBJS)
 	ar rc $@ $^
 
-bonus: $(OBJSB)
-	ar rc $(NAME) $^
-	
+bonus:
+	make SRCS='$(SRCS) $(BONUS)'
+
 clean:
 	rm -f $(OBJS)
 	rm -f $(OBJSB)
